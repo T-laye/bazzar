@@ -1,12 +1,13 @@
+import Link from "next/link";
 import React from "react";
 import { GiForkKnifeSpoon } from "react-icons/gi";
 
 const Industry = () => {
   return (
-    <div className="border flex py-4 px-2 flex-col items-center justify-center w-full">
+    <Link href='' className="border flex py-4 px-2 flex-col items-center justify-center w-full">
       <GiForkKnifeSpoon className="text-[100px] text-primary hover:text-primary-hover" />
       <div className="text-center">Food & Beverage</div>
-    </div>
+    </Link>
   );
 };
 
