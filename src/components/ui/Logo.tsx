@@ -1,11 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { FC } from "react";
 
-const Logo = () => {
+interface LogoProps {
+  css?: string;
+}
+
+const Logo: FC<LogoProps> = ({ css = "h-[90px]" }) => {
   return (
     <Link href="/">
-      <div className="h-[90px] -ml-2">
+      <div className={` ${css}  -ml-2`}>
         <Image
           height={100}
           width={100}
