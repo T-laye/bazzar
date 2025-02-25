@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description: "Get what you want with Ease.",
     images: [
       {
-        url: "/logo.svg",
+        url: "/bazzar.webp",
         alt: "Instrument Bazzar",
       },
     ],
