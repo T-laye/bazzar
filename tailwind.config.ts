@@ -14,8 +14,8 @@ export default {
         primary: {
           background: "#FAF3F3",
           hover: "#B04444",
-          pressed: "#9C1515",
-          DEFAULT: "#BA5C5C",
+          pressed: "#BA5C5C",
+          DEFAULT: "#9C1515",
         },
         secondary: {
           background: "#F3F4F5",

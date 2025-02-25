@@ -1,4 +1,4 @@
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown, Search, ShoppingCart, UserRound } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 // import Category from "../Categories";
@@ -49,6 +49,23 @@ const Navbar = () => {
             <Search size={16} />{" "}
           </Link>
           {/* <Category style="top-10 right-0 dropDown" /> */}
+        </div>
+
+        <div className="flex w-1/4 py-2 relative text-center bgblue-300 justify-end gap-3  duration-150">
+          <Link
+            href="/"
+            title="Cart"
+            className="flex justify-center items-center bg-white rounded-full p-1.5"
+          >
+            <ShoppingCart size={20} className="text-primary" />
+          </Link>
+          <Link
+            href="/"
+            title="My Account"
+            className="bg-white rounded-full flex justify-center items-center p-1.5"
+          >
+            <UserRound size={20} className="text-primary" />
+          </Link>
         </div>
       </div>
     </nav>
