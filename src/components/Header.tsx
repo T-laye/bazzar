@@ -1,16 +1,17 @@
 import React from "react";
 import Logo from "./ui/Logo";
 import Link from "next/link";
-import { ChevronDown, Phone, Search } from "lucide-react";
-import Category from "./Categories";
+import { Phone } from "lucide-react";
+import Navbar from "./NavBar/Navbar";
+import MobileNav from "./NavBar/MobileNav";
 
 const Header = () => {
   return (
     <header className="">
       <div className="pt-2">
-        <div className="flex justify-between items-center container max-sm:flex-col max-sm:items-start">
+        <div className="flex justify-between items-center container max-sm:hidden max-sm:flex-col max-sm:items-start">
           <Logo css="h-12 md:h-16 " />
-          <div className="flex flex-col items-end gap-2 bgred-400 w-full">
+          <div className="flex flex-col items-end gap-2 bgred-400 w-full ">
             <div className="font-bold flex items-center max-sm:justify-end flex-wrap gap-2 text-black-line bg-green500">
               <Link href="">Certificate Retrieval</Link>
               <div className="h-6 w-[1px] bg-black-line"></div>
@@ -28,59 +29,8 @@ const Header = () => {
             </Link>
           </div>
         </div>
-        <nav className=" bg-primary mt-6">
-          <div className=" flex justify-center gap4 text-white container items-center font-semibold">
-            <div className="items w-1/4 py-2 relative text-center hover:bg-primary-hover duration-150">
-              <Link
-                href="/"
-                className="flex w-full items-end justify-center gap-1"
-              >
-                <span>Products</span>
-                <ChevronDown size={20} />{" "}
-              </Link>
-              <Category style="top-10 left-0 dropDown" />
-            </div>
-
-            <div className="h-10 w-[1px]  bg-neutral-line"></div>
-
-            <div className="items w-1/4 py-2 relative text-center hover:bg-primary-hover duration-150">
-              <Link
-                href="/"
-                className="flex w-full items-end justify-center gap-1"
-              >
-                <span>Caliberation</span>
-                <ChevronDown size={20} />{" "}
-              </Link>
-              <Category style="top-10 left-0 dropDown" />
-            </div>
-
-            <div className="h-10  w-[1px] bg-neutral-line"></div>
-
-            <div className="items w-1/4 py-2 relative text-center hover:bg-primary-hover duration-150">
-              <Link
-                href="/"
-                className="flex w-full items-end justify-center gap-1"
-              >
-                <span>Services</span>
-                <ChevronDown size={20} />{" "}
-              </Link>
-              <Category style="top-10 right-0 dropDown" />
-            </div>
-
-            <div className="h-10 w-[1px]  bg-neutral-line"></div>
-
-            <div className="items w-1/4 py-2 relative text-center hover:bg-primary-hover duration-150">
-              <Link
-                href="/"
-                className="flex w-full items-center justify-center gap-1"
-              >
-                <span>Search</span>
-                <Search size={16} />{" "}
-              </Link>
-              <Category style="top-10 right-0 dropDown" />
-            </div>
-          </div>
-        </nav>
+        <Navbar />
+        <MobileNav />
       </div>
     </header>
   );
