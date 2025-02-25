@@ -25,3 +25,8 @@ section {
 .items:hover .dropDown {
   display: block;
 }
+
+  .hide-scroll::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+  }

@@ -1,7 +1,10 @@
 import { ChevronDown, Search } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import Category from "../Categories";
+// import Category from "../Categories";
+import ProductCategories from "./ProductCategories";
+import Caliberations from "./Caliberations";
+import ServicesCategories from "./ServicesCategories";
 
 const Navbar = () => {
   return (
@@ -12,7 +15,7 @@ const Navbar = () => {
             <span>Products</span>
             <ChevronDown size={20} />{" "}
           </Link>
-          <Category style="top-10 left-0 dropDown" />
+          <ProductCategories />
         </div>
 
         <div className="h-10 w-[1px]  bg-neutral-line"></div>
@@ -22,7 +25,7 @@ const Navbar = () => {
             <span>Caliberation</span>
             <ChevronDown size={20} />{" "}
           </Link>
-          <Category style="top-10 left-0 dropDown" />
+          <Caliberations />
         </div>
 
         <div className="h-10  w-[1px] bg-neutral-line"></div>
@@ -32,7 +35,7 @@ const Navbar = () => {
             <span>Services</span>
             <ChevronDown size={20} />{" "}
           </Link>
-          <Category style="top-10 right-0 dropDown" />
+          <ServicesCategories />
         </div>
 
         <div className="h-10 w-[1px]  bg-neutral-line"></div>
@@ -45,7 +48,7 @@ const Navbar = () => {
             <span>Search</span>
             <Search size={16} />{" "}
           </Link>
-          <Category style="top-10 right-0 dropDown" />
+          {/* <Category style="top-10 right-0 dropDown" /> */}
         </div>
       </div>
     </nav>

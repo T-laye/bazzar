@@ -1,20 +1,20 @@
 import React, { FC } from "react";
 
 interface CategoryProps {
-  style: string;
+  style?: string;
+  children: React.ReactNode;
 }
 
-const Category: FC<CategoryProps> = ({ style }) => {
+const Category: FC<CategoryProps> = ({ style, children }) => {
   return (
     <div
-      className={`${style} absolute text-black-secondary-bg bg-neutral-base-bg rounded p-4 w-96`}
+      className={` ${style} absolute  text-black-secondary-bg bg-white   shadow rounded p-4 z-10 `}
     >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
-      obcaecati libero omnis nemo non natus et minus aspernatur excepturi id
-      blanditiis, tempore quia atque deleniti, reprehenderit eos qui expedita
-      nesciunt accusantium. Iure cum perspiciatis sequi eveniet aliquam mollitia
-      nobis accusamus, ipsa sit beatae minus ab est enim obcaecati praesentium
-      architecto.
+      <div
+        className={`  grid sm:grid-cols-3 lg:grid-cols-4 gap-4 hide-scroll mx-auto  w-[520px] overflow-y-auto lg:w-[720px] max-h-[520px] `}
+      >
+        {children}
+      </div>
     </div>
   );
 };
