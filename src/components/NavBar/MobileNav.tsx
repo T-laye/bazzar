@@ -8,6 +8,9 @@ import {
   UserRound,
 } from "lucide-react";
 import { useNavStore } from "@/store/NavStore";
+import { productCategoriesContents } from "@/utilities/Contents";
+import Link from "next/link";
+import { signInRoute } from "@/utilities/Routes";
 
 const categories = [
   { id: 1, name: "Products" },
@@ -19,18 +22,23 @@ const MobileCategories = ({ isOpen }: { isOpen: boolean }) => {
   return (
     <div
       className={`overflow-hidden transition-all duration-200 ${
-        isOpen ? "max-h-40" : "max-h-0"
+        isOpen ? "max-h-fit" : "max-h-0"
       }`}
     >
-      <div className="text-black px-2 pt-2 pb-1 text-black-secondary-bg hover:bg-primary-background cursor-pointer duration-150">
-        Mobile Category 1
-      </div>
-      <div className="text-black px-2 pt-2 pb-1 text-black-secondary-bg hover:bg-primary-background cursor-pointer duration-150">
+      {productCategoriesContents.map((p, i) => (
+        <div
+          key={i}
+          className=" text-black px-2 py-2 leading-4 pb-1 text-black-secondary-bg hover:bg-primary-background cursor-pointer duration-150"
+        >
+         {p.title}
+        </div>
+      ))}
+      {/* <div className="text-black px-2 pt-2 pb-1 text-black-secondary-bg hover:bg-primary-background cursor-pointer duration-150">
         Mobile Category 2
       </div>
       <div className="text-black px-2 pt-2 pb-1 text-black-secondary-bg hover:bg-primary-background cursor-pointer duration-150">
         Mobile Category 3
-      </div>
+      </div> */}
     </div>
   );
 };
@@ -91,10 +99,10 @@ const MobileNav = () => {
             <span>Cart</span>
             <ShoppingCart size={20} className="text-white" />
           </div>
-          <div className="flex items-center justify-between bg-primary py-2 w-full px-2 cursor-pointer">
+          <Link href={signInRoute} className="flex items-center justify-between bg-primary py-2 w-full px-2 cursor-pointer">
             <span>Sign In</span>
             <UserRound size={20} className="text-white" />
-          </div>
+          </Link>
         </div>
       </div>
     </nav>
