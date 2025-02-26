@@ -8,29 +8,46 @@ import {
   UserRound,
 } from "lucide-react";
 import { useNavStore } from "@/store/NavStore";
-import { productCategoriesContents } from "@/utilities/Contents";
+import {
+  caliberationsContents,
+  productCategoriesContents,
+  servicesContents,
+} from "@/utilities/Contents";
 import Link from "next/link";
 import { signInRoute } from "@/utilities/Routes";
 
 const categories = [
   { id: 1, name: "Products" },
-  { id: 2, name: "Services" },
-  { id: 3, name: "Solutions" },
+  { id: 2, name: "Caliberations" },
+  { id: 3, name: "Services" },
 ];
 
-const MobileCategories = ({ isOpen }: { isOpen: boolean }) => {
+const MobileCategories = ({
+  isOpen,
+  title,
+}: {
+  isOpen: boolean;
+  title: string;
+}) => {
+  const contents =
+    title === "Products"
+      ? productCategoriesContents
+      : title === "Caliberations"
+      ? caliberationsContents
+      : servicesContents;
+
   return (
     <div
       className={`overflow-hidden transition-all duration-200 ${
         isOpen ? "max-h-fit" : "max-h-0"
       }`}
     >
-      {productCategoriesContents.map((p, i) => (
+      {contents.map((p, i) => (
         <div
           key={i}
-          className=" text-black px-2 py-2 leading-4 pb-1 text-black-secondary-bg hover:bg-primary-background cursor-pointer duration-150"
+          className="border-b flex items-center border-b-black-base-bg text-black px-2 pt-2 pb-2  leading-4 text-black-secondary-bg hover:bg-primary-background cursor-pointer duration-150"
         >
-         {p.title}
+          <span className="line-clamp-1">{p.title}</span>
         </div>
       ))}
       {/* <div className="text-black px-2 pt-2 pb-1 text-black-secondary-bg hover:bg-primary-background cursor-pointer duration-150">
@@ -88,7 +105,10 @@ const MobileNav = () => {
                   }`}
                 />
               </div>
-              <MobileCategories isOpen={activeCategory === category.id} />
+              <MobileCategories
+                title={category.name}
+                isOpen={activeCategory === category.id}
+              />
             </div>
           ))}
           <div className="flex items-center justify-between bg-primary py-2 w-full px-2 cursor-pointer">
@@ -99,7 +119,10 @@ const MobileNav = () => {
             <span>Cart</span>
             <ShoppingCart size={20} className="text-white" />
           </div>
-          <Link href={signInRoute} className="flex items-center justify-between bg-primary py-2 w-full px-2 cursor-pointer">
+          <Link
+            href={signInRoute}
+            className="flex items-center justify-between bg-primary py-2 w-full px-2 cursor-pointer"
+          >
             <span>Sign In</span>
             <UserRound size={20} className="text-white" />
           </Link>
