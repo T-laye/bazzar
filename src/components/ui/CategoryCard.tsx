@@ -1,20 +1,26 @@
 import Image from "next/image";
-import React from "react";
+import React, { FC } from "react";
 
-const CategoryCard = () => {
+interface Props {
+  title: string;
+  image?: string;
+}
+
+const CategoryCard: FC<Props> = ({ title, image }) => {
   return (
-    <div className="h-48 w-40 rounded overflow-hidden">
+    <div className="h-40 w-40 rounded overflow-hidden hover:border-primary border-2 duration-150 cursor-pointer">
       <div className="w-full h-2/3">
         <Image
           alt="image"
-          src="/Loaded-Platform-Left-Side-Included-1-scaled.jpg"
+          // src="/Loaded-Platform-Left-Side-Included-1-scaled.jpg"
+          src={image || "/Loaded-Platform-Left-Side-Included-1-scaled.jpg"}
           height={500}
           width={500}
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="bg-black-base-bg h-1/3 flex justify-center items-center text-center text-sm">
-        Lorem ipsum dolor sit amet.
+      <div className="bg-black-base-bg h-1/3 flex justify-center px-2 items-center text-center text-sm">
+        {title}
       </div>
     </div>
   );
