@@ -59,13 +59,23 @@ const Navbar = () => {
           >
             <ShoppingCart size={20} className="text-primary" />
           </Link>
-          <Link
-            href="/"
-            title="My Account"
-            className="bg-white rounded-full flex justify-center items-center p-1.5"
-          >
-            <UserRound size={20} className="text-primary" />
-          </Link>
+          {!true ? (
+            <Link
+              href="/"
+              title="My Account"
+              className="bg-white rounded-full flex justify-center items-center p-1.5"
+            >
+              <UserRound size={20} className="text-primary" />
+            </Link>
+          ) : (
+            <Link
+              href="/"
+              title="My Account"
+              className="text-primary bg-white rounded-xl flex justify-center items-center p-1.5"
+            >
+              Sign In
+            </Link>
+          )}
         </div>
       </div>
     </nav>
