@@ -1,7 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import Logo from "../ui/Logo";
-import { AlignJustify, ChevronDown } from "lucide-react";
+import {
+  AlignJustify,
+  ChevronDown,
+  ShoppingCart,
+  UserRound,
+} from "lucide-react";
 import { useNavStore } from "@/store/NavStore";
 
 const categories = [
@@ -50,13 +55,13 @@ const MobileNav = () => {
       <div
         onClick={closeNav}
         className={`fixed h-screen bg-[#00000060] backdrop-blur top-0 left-0 right-0 bottom-0 duration-150 ${
-          isNavOpen ? "translate-x-0" : "translate-x-[200%]"
+          !isNavOpen ? "translate-x-0" : "translate-x-[200%]"
         }`}
       ></div>
 
       <div
         className={`fixed flex flex-col items-start h-screen bg-white top-0 left-0 w-2/3 duration-150 pt-10 ${
-          isNavOpen ? "translate-x-0" : "-translate-x-[200%]"
+          !isNavOpen ? "translate-x-0" : "-translate-x-[200%]"
         }`}
       >
         <Logo css="h-12 px-2" />
@@ -81,6 +86,14 @@ const MobileNav = () => {
           <div className="flex items-center justify-between bg-primary py-2 w-full px-2 cursor-pointer">
             <span>Search</span>
             <ChevronDown size={22} />
+          </div>
+          <div className="flex items-center justify-between bg-primary py-2 w-full px-2 cursor-pointer">
+            <span>Cart</span>
+            <ShoppingCart size={20} className="text-white" />
+          </div>
+          <div className="flex items-center justify-between bg-primary py-2 w-full px-2 cursor-pointer">
+            <span>Sign In</span>
+            <UserRound size={20} className="text-white" />
           </div>
         </div>
       </div>

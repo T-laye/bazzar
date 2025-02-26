@@ -25,12 +25,8 @@ export default function Page() {
   }, [countdown]);
 
   const handleResend = () => {
-    // if (email) {
-      //   mutate({ email });
-
-      setResendMessage("OTP sent again.");
-      setTimeout(() => setResendMessage(null), 5000); // Clear the message after 5 seconds
-    // }
+    setResendMessage("OTP sent again.");
+    setTimeout(() => setResendMessage(null), 5000); // Clear the message after 5 seconds
   };
 
   return (
