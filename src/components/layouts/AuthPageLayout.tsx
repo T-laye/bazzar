@@ -3,10 +3,10 @@ import React from "react";
 export default function AuthPageLayout({
   children,
   message,
-}: Readonly<{
+}: {
   children: React.ReactNode;
   message: string;
-}>) {
+}) {
   return (
     <div className="flex h-screen ">
       <div className="flex-1 px-4 hide-scroll sm:px-8 relative  overflow-y-auto">
