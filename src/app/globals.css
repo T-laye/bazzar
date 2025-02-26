@@ -32,7 +32,7 @@ section {
 }
 
 .input-class {
-    @apply h-12 w-full rounded border border-[##CED4DA] bg-white px-4 py-3 text-[#000000E5] hover:border  focus:bg-white focus:outline-none;
+    @apply h-12 w-full rounded border border-[##CED4DA] bg-white px-4 py-3 text-[#000000E5] hover:border  focus:bg-[#FAF3F3] focus:outline-none duration-100;
   }
   .select-class {
     /* @apply h-12 w-full appearance-none rounded-lg border-[#000000] bg-[#0000000F] px-4 py-3 text-[#000000E5] hover:border focus:border-[3px] focus:bg-white focus:outline-none; */

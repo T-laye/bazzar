@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={fn}
       disabled={loading || disabled} // Disable the button when loading or manually disabled
       type={type}
-      className={`flex h-12 items-center justify-center whitespace-nowrap rounded px-[16.29px] py-[9.55px] text-[16px] duration-150 font-semibold ${css} 
+      className={`flex h-11 items-center justify-center whitespace-nowrap rounded px-[16.29px] py-[9.55px] text-[16px] duration-150 font-semibold ${css} 
       ${
         style === "primary" &&
         "bg-primary hover:bg-primary-hover active:bg-primary-pressed text-white"

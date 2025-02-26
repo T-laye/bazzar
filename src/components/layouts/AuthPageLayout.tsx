@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function AuthLayout({
+export default function AuthPageLayout({
   children,
   message,
 }: Readonly<{
@@ -10,7 +10,9 @@ export default function AuthLayout({
   return (
     <div className="flex h-screen ">
       <div className="flex-1 px-4 hide-scroll sm:px-8 relative  overflow-y-auto">
-        {children}
+        <div className="py-20 flex justify-center min-h-full md:items-center">
+          {children}
+        </div>
       </div>
       <div className="bg-primary max-lg:hidden flex justify-center items-center flex-1 px-10">
         <div className="text-white bggreen-300 wfull">
