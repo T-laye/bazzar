@@ -55,13 +55,13 @@ const MobileNav = () => {
       <div
         onClick={closeNav}
         className={`fixed h-screen bg-[#00000060] backdrop-blur top-0 left-0 right-0 bottom-0 duration-150 ${
-          !isNavOpen ? "translate-x-0" : "translate-x-[200%]"
+          isNavOpen ? "translate-x-0" : "translate-x-[200%]"
         }`}
       ></div>
 
       <div
         className={`fixed flex flex-col items-start h-screen bg-white top-0 left-0 w-2/3 duration-150 pt-10 ${
-          !isNavOpen ? "translate-x-0" : "-translate-x-[200%]"
+          isNavOpen ? "translate-x-0" : "-translate-x-[200%]"
         }`}
       >
         <Logo css="h-12 px-2" />
