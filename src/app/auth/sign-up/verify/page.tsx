@@ -3,12 +3,12 @@ import OtpForm from "@/components/forms/OtpForm";
 import AuthPageLayout from "@/components/layouts/AuthPageLayout";
 // import { toast } from "@/utilities/Helpers";
 // import Toast from "@/components/Toast";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 export default function Page() {
-  const searchParams = useSearchParams();
-  const email = searchParams.get("email");
+  // const searchParams = useSearchParams();
+  // const email = searchParams.get("email");
   //   const { mutate } = useSendOtp();
 
   const [countdown, setCountdown] = useState(30);
@@ -25,12 +25,12 @@ export default function Page() {
   }, [countdown]);
 
   const handleResend = () => {
-    if (email) {
+    // if (email) {
       //   mutate({ email });
 
       setResendMessage("OTP sent again.");
       setTimeout(() => setResendMessage(null), 5000); // Clear the message after 5 seconds
-    }
+    // }
   };
 
   return (
