@@ -1,14 +1,19 @@
 import Image from "next/image";
+import Link from "next/link";
 import React, { FC } from "react";
 
 interface Props {
   title?: string;
   image?: string;
+  route?: string;
 }
 
-const CategoryCard: FC<Props> = ({ title, image }) => {
+const CategoryCard: FC<Props> = ({ title, image, route }) => {
   return (
-    <div className="h-40 w-40 rounded overflow-hidden hover:border-primary border-2 duration-150 cursor-pointer">
+    <Link
+      href={route || ""}
+      className="h-40 w-40 rounded overflow-hidden hover:border-primary border-2 duration-150 cursor-pointer"
+    >
       <div className="w-full h-2/3">
         <Image
           alt="image"
@@ -22,7 +27,7 @@ const CategoryCard: FC<Props> = ({ title, image }) => {
       <div className="bg-black-base-bg h-1/3 flex justify-center px-2 items-center text-center text-sm">
         {title}
       </div>
-    </div>
+    </Link>
   );
 };
 
