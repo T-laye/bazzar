@@ -1,4 +1,3 @@
-import { caliberationsContents } from "@/utilities/Contents";
 import Image from "next/image";
 import React, { FC } from "react";
 

@@ -1,7 +1,6 @@
 import CaliberationLayout from "@/components/layouts/CaliberationLayout";
 import ForceCard from "@/components/ui/ForceCard";
 import { Flexible } from "@/utilities/Contents";
-import Image from "next/image";
 import React from "react";
 
 

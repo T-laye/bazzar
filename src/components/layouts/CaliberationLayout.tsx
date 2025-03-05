@@ -27,7 +27,7 @@ const CaliberationLayout: FC<CalProps> = ({ children }) => {
             WHAT WE CALIBERATE
           </div>
         </div>
-        <div className="flex mt-5 gap-4">
+        <div className="flex mt-5 gap-10">
           <nav className="w-1/4 max-lg:hidden">
             <h3 className="text-primary text-2xl">
               Metrology <br /> Caliberation Services

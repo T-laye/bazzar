@@ -1,5 +1,4 @@
 "use client";
-import { Flexible } from "@/utilities/Contents";
 import Image from "next/image";
 import React, { FC, useState } from "react";
 

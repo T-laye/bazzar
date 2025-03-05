@@ -1,6 +1,4 @@
 import CaliberationLayout from "@/components/layouts/CaliberationLayout";
-import Button from "@/components/ui/Button";
-import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { CaContent, CaContent2 } from "@/utilities/Contents";
