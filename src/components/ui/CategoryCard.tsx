@@ -24,7 +24,7 @@ const CategoryCard: FC<Props> = ({ title, image, route }) => {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="bg-black-base-bg h-1/3 flex justify-center px-2 items-center text-center text-sm">
+      <div className="bg-black-base-bg h-1/3 flex justify-center px-2 items-center text-center  text-sm">
         {title}
       </div>
     </Link>

@@ -50,7 +50,7 @@ const CaliberationLayout: FC<CalProps> = ({ children }) => {
               ))}
             </div>
           </nav>
-          <div className="bg-green-400 w-full">{children}</div>
+          <div className="w-full">{children}</div>
         </div>
       </div>
     </div>
