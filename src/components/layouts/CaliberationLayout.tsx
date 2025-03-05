@@ -6,11 +6,12 @@ import React, { FC } from "react";
 
 interface CalProps {
   children: React.ReactNode;
+  title: string;
 }
 
-const CaliberationLayout: FC<CalProps> = ({ children }) => {
+const CaliberationLayout: FC<CalProps> = ({ children, title }) => {
   const pathname = usePathname();
-  console.log(pathname);
+  // console.log(pathname);
 
   return (
     <div className="pt-5 pb-20">
@@ -18,13 +19,14 @@ const CaliberationLayout: FC<CalProps> = ({ children }) => {
         <div
           className="flex items-end min-h-[20vh]"
           style={{
-            backgroundImage: `url('/lab_equipment.jpg')`,
+            // backgroundImage: `url('/lab_equipment.jpg')`,
+            backgroundImage: `url('/calibration.jpg')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
           <div className="bg-[#ffffff90] text-primary font-medium text-xl px-2 py-0.5 sm:text-3xl mb-2 w-full backdrop-blur">
-            WHAT WE CALIBERATE
+            {title.toUpperCase()}
           </div>
         </div>
         <div className="flex mt-5 gap-10">

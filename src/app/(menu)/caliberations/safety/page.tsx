@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Page() {
   return (
-    <CaliberationLayout>
+    <CaliberationLayout title="Safety">
       <h1 className="text-[36px] font-medium mt-[10px] mb-[20px]">Safety</h1>
       <p className="text-[14px] text-[#333333] mb-[10px] font-medium">
         In our industry it’s a matter of life and death. Period. Nicol Scales &

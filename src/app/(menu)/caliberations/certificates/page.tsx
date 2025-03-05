@@ -25,7 +25,7 @@ export default function Program() {
   ];
 
   return (
-    <CaliberationLayout>
+    <CaliberationLayout title="online caliberation certificates">
       <h1 className="text-[36px] font-medium leading-[1.1] mb-[10px]">
         Online Calibration Certificates
       </h1>

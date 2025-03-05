@@ -5,7 +5,7 @@ import React from "react";
 
 export default function Page() {
   return (
-    <CaliberationLayout>
+    <CaliberationLayout title="Reasons to Caliberate">
       <h1 className="text-[36px] font-medium mb-[10px]">
         Reasons to Calibrate
       </h1>

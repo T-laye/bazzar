@@ -6,7 +6,7 @@ import React from "react";
 
 export default function Page() {
   return (
-    <CaliberationLayout>
+    <CaliberationLayout title="Our Caliberation Labs" >
       <h1 className="text-[36px] mb-[10px] font-medium text-[#000000]">
         Our Calibration Labs
       </h1>

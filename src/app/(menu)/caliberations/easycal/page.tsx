@@ -6,7 +6,7 @@ import React from "react";
 
 export default function Progam() {
   return (
-    <CaliberationLayout>
+    <CaliberationLayout title="EasyCal Programs">
       <h1 className="text-[36px] font-medium mb-[10px] text-[#000000] leading-tight">Our EasyCal Program</h1>
       <p className="text-[14px] text-[#333333] leading-1 mb-[10px] font-medium">
         EasyCal is a comprehensive calibration program that assures all your
