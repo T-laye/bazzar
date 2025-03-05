@@ -34,14 +34,14 @@ const ForceCard: FC<Force> = ({ title, text, image }) => {
         )}
       </div>
       <div className=" w-full md:w-[85%] lg:w-[85%]">
-        <h1 className="text-[30px] font-normal leading-[1.1] mb-[5px] text-[#444]">
+        <h1 className="text-[30px] font-medium leading-[1.1] mb-[5px] text-[#444]">
           {title || "Two"}
         </h1>
-        <p className="text-[14px] text-[#444]">
+        <p className="text-[14px] text-[#444] font-medium">
           {expanded ? displayText : previewText}
           <button 
             onClick={() => setExpanded(!expanded)} 
-            className="text-primary ml-1 hover:underline"
+            className="text-primary ml-1 hover:underline font-medium"
           >
             {expanded ? "Read Less" : "Read More"}
           </button>

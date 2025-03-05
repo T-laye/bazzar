@@ -6,10 +6,10 @@ import React from "react";
 export default function Page() {
   return (
     <CaliberationLayout>
-      <h1 className="text-[36px] font-normal mb-[10px]">
+      <h1 className="text-[36px] font-medium mb-[10px]">
         Reasons to Calibrate
       </h1>
-      <p className="text-[14px] text-[#333333] font-normal mb-[10px]">
+      <p className="text-[14px] text-[#333333] font-medium mb-[10px]">
         No matter what kind of weighing or measurement equipment you are using,
         routine calibration is very important. Here are just a few reasons to
         calibrate your weighing and measurement equipment:
@@ -17,13 +17,13 @@ export default function Page() {
       <ul className="px-8 list-disc mb-[10px]">
         {ReasonsContent.map((p, i) => {
           return (
-            <li key={i} className="text-[14px] text-[#333333]">
+            <li key={i} className="text-[14px] text-[#333333] font-medium">
               {p.description}
             </li>
           );
         })}
       </ul>
-      <p className="text-[14px] text-[#333333]">
+      <p className="text-[14px] text-[#333333] font-medium">
         Today’s weighing and measurement equipment is more accurate and
         sensitive than in years past. Routine calibration services and general
         preventative maintenance ensure that you save money and minimize

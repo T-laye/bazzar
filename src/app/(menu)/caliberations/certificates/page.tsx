@@ -26,29 +26,29 @@ export default function Program() {
 
   return (
     <CaliberationLayout>
-      <h1 className="text-[36px] font-semibold leading-[1.1] mb-[10px]">
+      <h1 className="text-[36px] font-medium leading-[1.1] mb-[10px]">
         Online Calibration Certificates
       </h1>
-      <p className="text-[14px] font-normal mb-[10px]">
-        <span className="font-semibold">CertFlo</span> is NSM's custom and
+      <p className="text-[14px] font-medium mb-[10px]">
+        <span className="font-medium">CertFlo</span> is NSM's custom and
         completely paperless calibration management and instrument tracking
         software. 24/7 Access to CertFlo is included for our customers who have
         signed EasyCal Calibration Agreements. Certificates are PDF Files and
         can be printed out for your records or retrieved for online viewing at
         any time.
       </p>
-      <p className="text-[14px] font-normal mb-[10px]">
+      <p className="text-[14px] font-medium mb-[10px]">
         Easy Cal customers can access their calibration certificates, their
         history of calibrations and a master lists of assets supported by NSM.
         They can also track the dates in which their equipment is due to be
         serviced.
       </p>
-      <p className="text-[14px] font-normal mb-[10px]">
+      <p className="text-[14px] font-medium mb-[10px]">
         Batch download/printing capability is now available for all users. The
         equipment search functionality has been updated with additional filters,
         making it easier to locate specific assets. Let us know what you think
         about these changes and what else you would like to see in CertFlo by{" "}
-        <span className="text-primary hover:underline font-semibold">
+        <span className="text-primary hover:underline font-medium">
           {" "}
           contacting us.
         </span>
@@ -64,14 +64,14 @@ export default function Program() {
       <div className="my-[20px]">
         <Link
           href="/"
-          className="text-primary text-[14px] hover:underline mb-[10px]"
+          className="text-primary text-[14px] font-medium hover:underline mb-[10px]"
         >
           Click here to see a sample online certificate.
         </Link>
-        <p className="text-[14px]">
+        <p className="text-[14px] font-medium">
           In addition to calibrations, we also sell and repair a wide variety of
           weighing, testing and inspection equipment. We also{" "}
-          <span className="text-primary hover:underline">
+          <span className="text-primary hover:underline font-medium">
             stock some items{" "}
           </span>{" "}
           in our 4 warehouses for quick delivery.

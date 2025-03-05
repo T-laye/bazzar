@@ -21,9 +21,9 @@ const EasyCard: FC<EasyContent> = ({ title, image = "/default-image.png", desc, 
         />
       </div>
       <div className="flex-1">
-        <h1 className="text-[30px] font-semibold mb-2 text-[#444] leading-[1.1]">{title}</h1>
-        <p className="text-sm text-[#444] mb-2">{text}</p>
-        <p className="text-sm text-[#444]">{desc}</p>
+        <h1 className="text-[30px] font-medium mb-2 text-[#444] leading-[1.1]">{title}</h1>
+        <p className="text-sm text-[#444] mb-2 font-medium">{text}</p>
+        <p className="text-sm text-[#444] font-medium">{desc}</p>
       </div>
     </div>
   );
