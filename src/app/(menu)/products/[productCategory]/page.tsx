@@ -13,7 +13,7 @@ export default function Page() {
         <ProductCard />
         <ProductCard />
         <ProductCard />
-        <ProductCard />
+        {/* <ProductCard /> */}
         {/* <ProductCard /> */}
       </div>
     </ProductsLayout>
