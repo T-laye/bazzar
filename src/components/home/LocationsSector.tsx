@@ -3,7 +3,7 @@ import React from "react";
 
 const LocationsSector = () => {
   return (
-    <section>
+    <section className="section">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 min-h-[30vh] rounded overflow-hidden border ">
           <div className=" flex flex-col justify-between items-center min-h-[30vh]">

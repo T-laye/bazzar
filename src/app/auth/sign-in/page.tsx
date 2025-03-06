@@ -4,11 +4,11 @@ import AuthLayout from "@/components/layouts/AuthPageLayout";
 import Button from "@/components/ui/Button";
 import { FcGoogle } from "react-icons/fc";
 import InputField from "@/components/ui/InputField";
-import { IUser } from "@/lib/types";
 import { useFormik } from "formik";
 import { signInValidationSchema } from "@/lib/validations";
 import { forgotPasswordRoute, signUpRoute } from "@/utilities/Routes";
 import Link from "next/link";
+import { IUser } from "@/types";
 
 export default function Page() {
   const formik = useFormik<Partial<IUser>>({
@@ -18,8 +18,9 @@ export default function Page() {
     },
     validationSchema: signInValidationSchema,
     onSubmit: (values) => {
-      const { email, password, firstName, lastName } = values;
-      console.log({ email, password, firstName, lastName });
+      // const { email, password, firstName, lastName } = values;
+      // console.log({ email, password, firstName, lastName });
+      console.log(values);
     },
   });
 

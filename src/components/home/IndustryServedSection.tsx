@@ -13,7 +13,7 @@ const Industry = () => {
 
 const IndustryServedSection = () => {
   return (
-    <section>
+    <section className="section">
       <div className="container">
         <div className="bg-red300 rounded-lg overflow-hidden border-l border-r border-b">
           <div className="bg-black-base-bg px-4 py-3 text-center text-lg">

@@ -6,7 +6,7 @@ body {
   @apply font-manrope text-black-secondary-bg;
 }
 
-section {
+.section {
   @apply py-10;
 }
 

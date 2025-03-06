@@ -4,7 +4,7 @@ import Button from "../ui/Button";
 
 const ExpandSection = () => {
   return (
-    <section>
+    <section className="section">
       <div className="container">
         <div
           style={{
@@ -17,9 +17,12 @@ const ExpandSection = () => {
         >
           <div className="flex-1 text-white max-md:flex max-md:flex-col max-md:items-center  w-full">
             <h3 className="text-3xl lg:text-4xl leading-8 7lg:leading-[52px] max-md:text-center max-md:max-w-lg">
-              <span className="text-2xl lg:text-3xl">Expanded Dimensional</span> <br className="max-md:hidden" /> Calibration
-              Capabilities <br className="max-md:hidden" />
-              <span className="text-2xl lg:text-3xl">With our brand new ULM</span>
+              <span className="text-2xl lg:text-3xl">Expanded Dimensional</span>{" "}
+              <br className="max-md:hidden" /> Calibration Capabilities{" "}
+              <br className="max-md:hidden" />
+              <span className="text-2xl lg:text-3xl">
+                With our brand new ULM
+              </span>
             </h3>
             <p className=" lg:text-lg mt-5 max-md:max-w-xl max-w-[350px] max-md:text-center">
               Learn more about our new ISO/IEC17025:2017 accredited dimensional

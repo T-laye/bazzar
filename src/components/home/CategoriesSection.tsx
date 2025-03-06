@@ -59,7 +59,7 @@ const CategoriesSection = () => {
   ];
 
   return (
-    <section>
+    <section className="section">
       <div className="container">
         <div className=" grid grid-cols-1 gap-4 mt-5 max-sm:pt-5 min-[500px]:grid-cols-2 min-[850px]:grid-cols-4">
           {content.map((p, i) => (
