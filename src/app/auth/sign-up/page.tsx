@@ -8,9 +8,32 @@ import { useFormik } from "formik";
 import { signUpValidationSchema } from "@/lib/validations";
 import { OtpVerificationRoute, signInRoute } from "@/utilities/Routes";
 import Link from "next/link";
-import { IUser } from "@/types";
 import { useCreateCustomer } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
+
+interface IUser {
+  name: {
+    first_name: string;
+    last_name: string;
+    middle_name: string;
+    _id: string;
+  };
+  address: {
+    street: string;
+    city: string;
+    state: string;
+    zip_code: string;
+    country: string;
+    default_address: boolean;
+    _id: string;
+  };
+  email?: string;
+  password?: string;
+  phoneNumber?: string;
+  picture?: string;
+  user_id?: string;
+  otp?: string;
+}
 
 export default function Page() {
   const [step, setStep] = useState(1);
@@ -91,7 +114,7 @@ export default function Page() {
               <InputField
                 name="name.first_name"
                 label="First Name"
-                value={formik.values.name.first_name}
+                value={formik.values.name?.first_name || ""}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
@@ -131,7 +154,7 @@ export default function Page() {
               <InputField
                 name="address.street"
                 label="Street"
-                value={formik.values.address.street}
+                value={formik.values.address?.street || ""}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
@@ -144,7 +167,7 @@ export default function Page() {
               <InputField
                 name="address.city"
                 label="City"
-                value={formik.values.address.city}
+                value={formik.values.address?.city || ""}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
@@ -156,7 +179,7 @@ export default function Page() {
               <InputField
                 name="address.state"
                 label="State"
-                value={formik.values.address.state}
+                value={formik.values.address?.state || ""}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
@@ -168,7 +191,7 @@ export default function Page() {
               <InputField
                 name="address.zip_code"
                 label="Zip Code"
-                value={formik.values.address.zip_code}
+                value={formik.values.address?.zip_code || ""}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
