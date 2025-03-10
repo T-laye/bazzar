@@ -13,6 +13,8 @@ export default function AuthProvider({ children }: AuthProviderProps) {
   const router = useRouter();
   const { setSession } = useSessionStore(); // Get session setter
 
+  // console.log(session);
+
   useEffect(() => {
     // Check if the user is authenticated based on session storage data
     const accessToken = sessionStorage.getItem("accessToken");

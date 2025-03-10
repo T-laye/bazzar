@@ -1,9 +1,11 @@
 import { axiosInstance } from "@/config/axios";
-import { IUser } from "@/types";
+import { ISession, IUser } from "@/types";
+import { signInRoute } from "@/utilities/Routes";
 // import { OtpVerificationRoute } from "@/utilities/Routes";
 // import { toast } from "@/utilities/Helpers";
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
 // import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -11,13 +13,21 @@ interface RegisterResponse {
   user?: { email: string };
 }
 
+interface OtpData {
+  email: string;
+  otp: string;
+}
+interface loginData {
+  email: string;
+  password: string;
+}
+
 interface ErrorResponse {
   error: string;
 }
 
-
 export const useCreateCustomer = () => {
-    // const router = useRouter();
+  // const router = useRouter();
 
   // Define the function to handle the registration API call
   const handleRegister = async (data: IUser) => {
@@ -25,16 +35,16 @@ export const useCreateCustomer = () => {
       "/customer/create",
       {
         name: {
-          first_name: data.name.first_name,
-          last_name: data.name.last_name,
-          middle_name: data.name.middle_name,
+          first_name: data.name?.first_name || "",
+          last_name: data.name?.last_name,
+          middle_name: data.name?.middle_name,
         },
         address: {
-          street: data.address.street,
-          city: data.address.city,
-          state: data.address.state,
-          zip_code: data.address.zip_code,
-          country: data.address.country,
+          street: data.address?.street,
+          city: data.address?.city,
+          state: data.address?.state,
+          zip_code: data.address?.zip_code,
+          country: data.address?.country,
           default_address: true,
         },
         email: data.email,
@@ -74,11 +84,81 @@ export const useCreateCustomer = () => {
   return mutation;
 };
 
+export const useVerifyEmail = () => {
+  const router = useRouter();
+  const handleVerifyEmail = async (data: OtpData) => {
+    const response = await axiosInstance.post<RegisterResponse>(
+      "/auth/verify-email",
+      {
+        email: data.email,
+        otp: data.otp,
+      }
+    );
+    return response.data;
+  };
+
+  // Use React Query's useMutation hook with additional configurations
+  const mutation = useMutation<
+    RegisterResponse,
+    AxiosError<ErrorResponse>,
+    OtpData
+  >({
+    mutationFn: handleVerifyEmail,
+    onSuccess: (data) => {
+      if (data) {
+        toast.success("Email Verification Successful");
+        router.push(signInRoute); // Redirect after successful registration
+      }
+    },
+    onError: (error) => {
+      const errorMessage =
+        axios.isAxiosError(error) && error.response?.data?.error
+          ? error.response.data.error
+          : "An unknown error occurred.";
+      toast.error(errorMessage);
+    },
+  });
+
+  return mutation;
+};
+
 export const useLogin = () => {
-  //   const login = async () => {
-  //     try {
-  //     } catch (error) {
-  //     }
-  //     // '/auth/login-customer'
-  //   };
+  const router = useRouter();
+  const handleLogin = async (data: loginData) => {
+    const response = await axiosInstance.post<ISession>(
+      "/auth/login-customer",
+      {
+        email: data.email,
+        password: data.password,
+      }
+    );
+    return response.data;
+  };
+
+  // Use React Query's useMutation hook with additional configurations
+  const mutation = useMutation<ISession, AxiosError<ErrorResponse>, loginData>({
+    mutationFn: handleLogin,
+    onSuccess: (data) => {
+      if (data) {
+        const accessToken = data?.accessToken;
+        const refreshToken = data?.refreshToken;
+        const user = data?.user;
+        sessionStorage.setItem("accessToken", accessToken);
+        sessionStorage.setItem("refreshToken", refreshToken);
+        sessionStorage.setItem("user", JSON.stringify(user));
+        toast.success("Login Successful");
+        // console.log(data);
+        router.push("/"); // Redirect after successful registration
+      }
+    },
+    onError: (error) => {
+      const errorMessage =
+        axios.isAxiosError(error) && error.response?.data?.error
+          ? error.response.data.error
+          : "An unknown error occurred.";
+      toast.error(errorMessage);
+    },
+  });
+
+  return mutation;
 };

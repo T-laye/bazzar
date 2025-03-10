@@ -9,18 +9,20 @@ import { signInValidationSchema } from "@/lib/validations";
 import { forgotPasswordRoute, signUpRoute } from "@/utilities/Routes";
 import Link from "next/link";
 import { IUser } from "@/types";
+import { useLogin } from "@/hooks/useAuth";
 
 export default function Page() {
-  const formik = useFormik<Partial<IUser>>({
+  const { mutate, isPending } = useLogin();
+
+  const formik = useFormik<IUser>({
     initialValues: {
       email: "",
       password: "",
     },
     validationSchema: signInValidationSchema,
     onSubmit: (values) => {
-      // const { email, password, firstName, lastName } = values;
-      // console.log({ email, password, firstName, lastName });
-      console.log(values);
+      console.log("Form Submitted:", values);
+      mutate({ email: values.email || "", password: values.password || "" });
     },
   });
 
@@ -82,7 +84,7 @@ export default function Page() {
             </Link>
           </div>
 
-          <Button style="primary" type="submit" css="mt-5">
+          <Button style="primary" type="submit" loading={isPending} css="mt-5">
             Submit
           </Button>
         </form>

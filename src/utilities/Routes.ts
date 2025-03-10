@@ -6,4 +6,7 @@ export const OtpVerificationRoute = "/auth/sign-up/verify";
 
 //Products route
 export const productsRoute = "/products";
-export const productRoute = (product: string) => `/products/${product}`;
+export const productRoute = (productCategory: string) =>
+  `/products/${productCategory}`;
+export const productIdRoute = (productCategory: string, productId: string) =>
+  `/products/${productCategory}/${productId}`;

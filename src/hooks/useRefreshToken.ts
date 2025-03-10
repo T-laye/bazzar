@@ -4,7 +4,7 @@ import { useSessionStore } from "@/store/SessionStore";
 export default function useRefreshToken() {
   const { session, setSession } = useSessionStore();
 
-  console.log(session);
+  // console.log(session);
 
   const refresh = async () => {
     if (!session?.refreshToken) {

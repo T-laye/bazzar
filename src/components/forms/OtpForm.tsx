@@ -1,18 +1,25 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-// import { useRouter } from "next/navigation";
 import Button from "../ui/Button";
-import { toast } from "@/utilities/Helpers";
+import { useVerifyEmail } from "@/hooks/useAuth";
+import { useSearchParams } from "next/navigation";
 
 // OtpInput component
 const OtpForm: React.FC = () => {
   // const router = useRouter();
+  const searchParams = useSearchParams();
+  const { mutate, isPending } = useVerifyEmail();
   const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
   const [error, setError] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
+  // const [loading, setLoading] = useState<boolean>(false);
   const inputRefs = useRef<HTMLInputElement[]>([]);
+ const email = decodeURIComponent(searchParams.get("email") || "").replace(
+   / /g,
+   "+"
+ );
 
-  // console.log(user);
+//  console.log(email);
+
 
   useEffect(() => {
     inputRefs.current[0]?.focus();
@@ -63,14 +70,17 @@ const OtpForm: React.FC = () => {
   };
 
   function handleSubmit() {
-    console.log(otp.join(""));
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      toast("Email Verified", "success");
-      // toast.success("Verified");
-      // router.push(selectRoleRoute)
-    }, 1000);
+    const values = otp.join("");
+    // console.log(values);
+
+    mutate({ email, otp: values });
+    // setLoading(true);
+    // setTimeout(() => {
+    //   setLoading(false);
+    //   toast("Email Verified", "success");
+    //   // toast.success("Verified");
+    //   // router.push(selectRoleRoute)
+    // }, 1000);
   }
 
   return (
@@ -85,7 +95,7 @@ const OtpForm: React.FC = () => {
           fn={handleSubmit}
           style="primary"
           type="button"
-          loading={loading}
+          loading={isPending}
         >
           Verify Email
         </Button>

@@ -1,11 +1,32 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import Logo from "./ui/Logo";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import Navbar from "./NavBar/Navbar";
 import MobileNav from "./NavBar/MobileNav";
+import { useSessionStore } from "@/store/SessionStore";
 
 const Header = () => {
+  const { setSession } = useSessionStore(); // Get session setter
+
+  // console.log(session);
+
+  useEffect(() => {
+    // Check if the user is authenticated based on session storage data
+    const accessToken = sessionStorage.getItem("accessToken");
+    const refreshToken = sessionStorage.getItem("refreshToken");
+    const user = sessionStorage.getItem("user");
+
+    if (accessToken && refreshToken && user) {
+      setSession({
+        accessToken,
+        refreshToken,
+        user: JSON.parse(user),
+      });
+    }
+  }, [setSession]);
+
   return (
     <header className="">
       <div className="pt-2">

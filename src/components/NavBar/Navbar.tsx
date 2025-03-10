@@ -1,3 +1,4 @@
+"use client";
 import { ChevronDown, Search, ShoppingCart, UserRound } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -5,8 +6,13 @@ import React from "react";
 import ProductCategories from "./ProductCategories";
 import Caliberations from "./Caliberations";
 import ServicesCategories from "./ServicesCategories";
+import { signInRoute } from "@/utilities/Routes";
+import { useSessionStore } from "@/store/SessionStore";
 
 const Navbar = () => {
+  const { session } = useSessionStore();
+  const user = session?.user;
+
   return (
     <nav className=" bg-primary mt-6 hidden sm:block ">
       <div className=" flex justify-center gap4 text-white container items-center font-semibold">
@@ -59,7 +65,7 @@ const Navbar = () => {
           >
             <ShoppingCart size={20} className="text-primary" />
           </Link>
-          {!true ? (
+          {user ? (
             <Link
               href="/"
               title="My Account"
@@ -69,7 +75,7 @@ const Navbar = () => {
             </Link>
           ) : (
             <Link
-              href="/"
+              href={signInRoute}
               title="My Account"
               className="text-primary bg-white rounded-xl flex justify-center items-center p-1.5"
             >

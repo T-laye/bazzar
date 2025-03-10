@@ -15,6 +15,7 @@ import {
 } from "@/utilities/Contents";
 import Link from "next/link";
 import { signInRoute } from "@/utilities/Routes";
+import { useRouter } from "next/navigation";
 
 const categories = [
   { id: 1, name: "Products" },
@@ -29,6 +30,8 @@ const MobileCategories = ({
   isOpen: boolean;
   title: string;
 }) => {
+  const router = useRouter();
+  const { closeNav } = useNavStore();
   const contents =
     title === "Products"
       ? productCategoriesContents
@@ -44,18 +47,16 @@ const MobileCategories = ({
     >
       {contents.map((p, i) => (
         <div
+          onClick={() => {
+            router.push(p.route);
+            closeNav();
+          }}
           key={i}
           className="border-b flex items-center border-b-black-base-bg text-black px-2 pt-2 pb-2  leading-4 text-black-secondary-bg hover:bg-primary-background cursor-pointer duration-150"
         >
-          <span className="line-clamp-1">{p.title}</span>
+          <span className="line-clamp-1">{p.title} </span>
         </div>
       ))}
-      {/* <div className="text-black px-2 pt-2 pb-1 text-black-secondary-bg hover:bg-primary-background cursor-pointer duration-150">
-        Mobile Category 2
-      </div>
-      <div className="text-black px-2 pt-2 pb-1 text-black-secondary-bg hover:bg-primary-background cursor-pointer duration-150">
-        Mobile Category 3
-      </div> */}
     </div>
   );
 };

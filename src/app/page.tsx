@@ -6,6 +6,8 @@ import IndustryServedSection from "@/components/home/IndustryServedSection";
 import LocationsSector from "@/components/home/LocationsSector";
 
 export default function Home() {
+
+  
   return (
     <div className="">
       <Header />
