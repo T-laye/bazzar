@@ -67,7 +67,7 @@ const Navbar = () => {
           </Link>
           {user ? (
             <Link
-              href="/"
+              href="/account"
               title="My Account"
               className="bg-white rounded-full flex justify-center items-center p-1.5"
             >
