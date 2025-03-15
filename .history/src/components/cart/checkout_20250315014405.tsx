@@ -42,7 +42,7 @@ const CheckoutModal = ({ isOpen, onClose, cartItems }:{isOpen:boolean,onClose:(d
 
 
   if(!session?.user){
-    router.push('/auth/sign-in')
+    router.push('/sign-up')
   }
   // Initialize addresses from user data
   useEffect(() => {
