@@ -1,0 +1,90 @@
+import axios from "axios";
+
+// const BASE_URL = "https://bazaar-75wr.onrender.com/api";
+const BASE_URL = "http://localhost:8080/api";
+
+export const axiosInstance = axios.create({
+  baseURL: BASE_URL,
+  headers: { "Content-Type": "application/json" },
+});
+
+export const axiosAuth = axios.create({
+  baseURL: BASE_URL,
+  headers: { "Content-Type": "application/json" },
+});
+
+
+// Create an axios instance
+export const authAxios = axios.create({
+  baseURL: BASE_URL,
+  headers: { 'Content-Type': 'application/json' },
+});
+
+// Request interceptor — attach the access token
+authAxios.interceptors.request.use(
+  (config) => {
+    if (typeof window !== 'undefined') { // Ensure client-side execution
+      const token = sessionStorage.getItem('accessToken');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// Flag to prevent multiple token refresh requests
+let isRefreshing = false;
+let refreshSubscribers: ((token: string) => void)[] = [];
+
+// Helper to handle queued requests after token refresh
+const onTokenRefreshed = (token: string) => {
+  refreshSubscribers.forEach((callback) => callback(token));
+  refreshSubscribers = [];
+};
+
+// Response interceptor — handle 403 and refresh token
+authAxios.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config;
+
+    if (error.response?.status === 403 && !originalRequest._retry) {
+      if (isRefreshing) {
+        // Queue the request until the token is refreshed
+        return new Promise((resolve) => {
+          refreshSubscribers.push((token) => {
+            originalRequest.headers.Authorization = `Bearer ${token}`;
+            resolve(authAxios(originalRequest));
+          });
+        });
+      }
+
+      originalRequest._retry = true;
+      isRefreshing = true;
+
+      try {
+        const refreshResponse = await axios.post(`${BASE_URL}/auth/refresh`, {}, {
+          withCredentials: true,
+        });
+
+        const newAccessToken = refreshResponse.data.accessToken;
+        sessionStorage.setItem('accessToken', newAccessToken);
+
+        onTokenRefreshed(newAccessToken);
+        isRefreshing = false;
+
+        // Retry the original request with the new token
+        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+        return authAxios(originalRequest);
+      } catch (refreshError) {
+        console.error('Token refresh failed:', refreshError);
+        isRefreshing = false;
+        return Promise.reject(refreshError);
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
