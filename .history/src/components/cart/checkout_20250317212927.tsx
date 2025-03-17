@@ -550,7 +550,7 @@ const CheckoutModal = ({ isOpen, onClose, cartItems }:{isOpen:boolean,onClose:(d
             </div>
           </div>
         )}
-        <PaystackHookWrapper mode='cart' amount={totalPrice} email={session?.user?.email as string} buttonRef={buttonRef} orderId={orderId} showSuccessModal={setOrderComplete} isSubmitting={setIsSubmitting}/>
+        <PaystackHookWrapper amount={totalPrice} email={session?.user?.email as string} buttonRef={buttonRef} orderId={orderId} showSuccessModal={setOrderComplete} isSubmitting={setIsSubmitting}/>
       </div>
     </div>
   );

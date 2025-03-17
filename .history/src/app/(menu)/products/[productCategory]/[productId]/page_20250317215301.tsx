@@ -4,17 +4,19 @@ import PageLoading from "@/components/ui/PageLoading";
 import { useGetProductsById } from "@/hooks/useProducts";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { HeartIcon, Home, ChevronRight } from "lucide-react";
 import { cartService } from "@/hooks/useCart";
 import { AppContext, IContext } from "@/providers/Context";
 import Button from "@/components/ui/Button";
 import PaystackHookWrapper from "@/components/cart/paystackPayment";
+import { useSessionStore } from "@/store/SessionStore";
 
 export default function Page() {
   const { productId } = useParams();
   const { data, isLoading } = useGetProductsById(productId as string);
   const router = useRouter();
+  const {session} = useSessionStore();
   
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('Description');
@@ -30,6 +32,7 @@ export default function Page() {
     }
   };
   const {setCartItems} = useContext(AppContext) as IContext
+   const buttonRef = useRef<HTMLButtonElement>(null);
 
   // console.log(data, productId);
 
@@ -141,11 +144,8 @@ export default function Page() {
                     +
                   </button>
                 </div>
-                <Button style="primary" type="button" css="" fn={()=>{
-                  cartService.addItemToCart({product:data?._id,name:data?.name as string,unit_price:data?.pricing?.unit_price as number,quantity,picture:data?.product_media[0] as string})
-                  setCartItems([...cartService.loadCart()])
-                  }}>
-                  Add to cart
+                <Button style="primary" type="button" css="">
+                  Buy Now
                 </Button>
               </div>
             </div>
@@ -236,6 +236,8 @@ export default function Page() {
               )}
             </div>
           </div>
+          <PaystackHookWrapper amount={data?.pricing?.unit_price} email={session?.user?.email as string} buttonRef={buttonRef}/>
+          
         </div>
       )}
     </div>

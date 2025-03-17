@@ -160,7 +160,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen: controlledIsOpen, onOpe
             ref={drawerRef}
             className={`fixed z-50 bg-white transform transition-transform duration-300 ease-in-out
               ${isMobile
-                ? 'inset-0 w-screen' // Full screen on mobile
+                ? 'inset-0 w-[40rem]' // Full screen on mobile
                 : 'top-0 right-0 h-full w-[24rem]' // Drawer on desktop
               }
               ${isOpen ? 'translate-x-0' : 'translate-x-full'}

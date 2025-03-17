@@ -4,19 +4,15 @@ import PageLoading from "@/components/ui/PageLoading";
 import { useGetProductsById } from "@/hooks/useProducts";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { HeartIcon, Home, ChevronRight } from "lucide-react";
-import { cartService } from "@/hooks/useCart";
-import { AppContext, IContext } from "@/providers/Context";
-import Button from "@/components/ui/Button";
-import PaystackHookWrapper from "@/components/cart/paystackPayment";
 
 export default function Page() {
   const { productId } = useParams();
   const { data, isLoading } = useGetProductsById(productId as string);
   const router = useRouter();
   
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(2);
   const [activeTab, setActiveTab] = useState('Description');
   const [selectedImage, setSelectedImage] = useState(0);
 
@@ -29,7 +25,6 @@ export default function Page() {
       setQuantity(quantity - 1);
     }
   };
-  const {setCartItems} = useContext(AppContext) as IContext
 
   // console.log(data, productId);
 
@@ -141,12 +136,9 @@ export default function Page() {
                     +
                   </button>
                 </div>
-                <Button style="primary" type="button" css="" fn={()=>{
-                  cartService.addItemToCart({product:data?._id,name:data?.name as string,unit_price:data?.pricing?.unit_price as number,quantity,picture:data?.product_media[0] as string})
-                  setCartItems([...cartService.loadCart()])
-                  }}>
-                  Add to cart
-                </Button>
+                <button className="ml-4 px-6 py-2 bg-red-700 text-white rounded hover:bg-red-800 flex-grow">
+                  Buy Now
+                </button>
               </div>
             </div>
           </div>

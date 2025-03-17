@@ -531,12 +531,12 @@ const CheckoutModal = ({ isOpen, onClose, cartItems }:{isOpen:boolean,onClose:(d
               {currentStep < 3 ? (
                 <button 
                   onClick={handleNextStep}
-                  className="px-4 py-2 text-sm  bg-primary text-white rounded-md hover:bg-red-700 transition-colors font-medium"
+                  className="px-4 py-2 text-sm  bg-red-800 text-white rounded-md hover:bg-red-700 transition-colors font-medium"
                 >Continue</button>
               ) : (
                 <button 
                   onClick={handleSubmitOrder}
-                  className="px-4 py-2 text-sm bg-primary text-white rounded-md hover:bg-red-700 transition-colors font-medium flex items-center"
+                  className="px-4 py-2 text-sm bg-red-800 text-white rounded-md hover:bg-red-700 transition-colors font-medium flex items-center"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -550,7 +550,7 @@ const CheckoutModal = ({ isOpen, onClose, cartItems }:{isOpen:boolean,onClose:(d
             </div>
           </div>
         )}
-        <PaystackHookWrapper mode='cart' amount={totalPrice} email={session?.user?.email as string} buttonRef={buttonRef} orderId={orderId} showSuccessModal={setOrderComplete} isSubmitting={setIsSubmitting}/>
+        <PaystackHookWrapper amount={totalPrice} email={session?.user?.email as string} buttonRef={buttonRef} orderId={orderId} showSuccessModal={setOrderComplete}/>
       </div>
     </div>
   );

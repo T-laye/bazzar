@@ -145,7 +145,7 @@ export default function Page() {
                   cartService.addItemToCart({product:data?._id,name:data?.name as string,unit_price:data?.pricing?.unit_price as number,quantity,picture:data?.product_media[0] as string})
                   setCartItems([...cartService.loadCart()])
                   }}>
-                  Add to cart
+                  Buy Now
                 </Button>
               </div>
             </div>

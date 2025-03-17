@@ -10,10 +10,9 @@ interface PaystackHookProps {
   buttonRef: React.RefObject<HTMLButtonElement | null>;
   amount: number;
   email: string;
-  orderId?: string;
-  showSuccessModal?: React.Dispatch<React.SetStateAction<boolean>>;
-  isSubmitting?: React.Dispatch<React.SetStateAction<boolean>>;
-  mode:string
+  orderId: string;
+  showSuccessModal: React.Dispatch<React.SetStateAction<boolean>>;
+  isSubmitting: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const PaystackHookWrapper: React.FC<PaystackHookProps> = ({
@@ -22,8 +21,7 @@ const PaystackHookWrapper: React.FC<PaystackHookProps> = ({
   email,
   orderId,
   showSuccessModal,
-  isSubmitting,
-  mode
+  isSubmitting
 }) => {
   const { setCartItems } = useContext(AppContext) as IContext;
 
@@ -52,12 +50,10 @@ const PaystackHookWrapper: React.FC<PaystackHookProps> = ({
                   reference: reference.reference,
                 };
                 await authAxios.put("/orders/payment", payload);
-                showSuccessModal && showSuccessModal(true);
-                isSubmitting && isSubmitting(false)
-                if(mode === 'cart'){
-                  setCartItems([])
-                  cartService.clearCart()
-                } 
+                showSuccessModal(true);
+                isSubmitting(false)
+                setCartItems([]);
+                cartService.clearCart();
               }
             },
             onClose: () => console.log("Payment dialog closed."),

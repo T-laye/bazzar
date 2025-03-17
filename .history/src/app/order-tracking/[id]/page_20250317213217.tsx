@@ -55,7 +55,7 @@ console.log(order)
   if (error) return <p className="text-red-500">Error: {error.message}</p>;
 
   return (
-    <div className='mt-8'>
+    <>
       <Head>
         <title>Tracking Detail: {trackingData?.trackingId}</title>
         <meta name="description" content="Parcel tracking information" />
@@ -109,6 +109,6 @@ console.log(order)
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

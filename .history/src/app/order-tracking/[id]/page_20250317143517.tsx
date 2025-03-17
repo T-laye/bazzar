@@ -23,7 +23,7 @@ console.log(order)
         trackingId: id || 'BY187746',
         parcelDate: '2023-02-20 03:42:20am',
         expectedDate: '2023-02-26',
-        currentStatus: 'PARCEL',
+        currentStatus: 'PARCEL ARRIVED AT OWERRI STATION',
         timeline: [
           {
             id: 1,
@@ -55,7 +55,7 @@ console.log(order)
   if (error) return <p className="text-red-500">Error: {error.message}</p>;
 
   return (
-    <div className='mt-8'>
+    <>
       <Head>
         <title>Tracking Detail: {trackingData?.trackingId}</title>
         <meta name="description" content="Parcel tracking information" />
@@ -87,7 +87,7 @@ console.log(order)
             <div className="mb-10">
               <h2 className="text-sm font-medium text-gray-600 mb-2">Current Status</h2>
               <div className="text-center py-6">
-                <h3 className="text-xl font-bold text-primary">Parcel delivery status</h3>
+                <h3 className="text-xl font-bold text-red-700">{trackingData?.currentStatus}</h3>
               </div>
             </div>
 
@@ -109,6 +109,6 @@ console.log(order)
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
