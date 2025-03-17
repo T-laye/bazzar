@@ -106,8 +106,7 @@ export default function Page() {
         </div>
 
         <form
-          onSubmit={
-            formik.handleSubmit}
+          onSubmit={formik.handleSubmit}
           className="flex flex-col gap-4 mt-10"
         >
           {/* Step 1: Personal Information */}
@@ -154,7 +153,7 @@ export default function Page() {
           {step === 2 && (
   <>
     <InputField
-      name="address.street"
+      name="address[0].street"
       label="Street"
       value={formik.values.address?.street || ""}
       onChange={formik.handleChange}
@@ -174,7 +173,7 @@ export default function Page() {
       }
     />
     <InputField
-      name="address.city"
+      name="address[0].city"
       label="City"
       value={formik.values.address?.city || ""}
       onChange={formik.handleChange}
@@ -194,7 +193,7 @@ export default function Page() {
       }
     />
     <InputField
-        name="address.state"
+        name="address[0].state"
         label="State"
         value={formik.values.address?.state || ""}
         onChange={formik.handleChange}
@@ -214,7 +213,7 @@ export default function Page() {
         }
       />
     <InputField
-      name="address.zip_code"
+      name="address[0].zip_code"
       label="Zip Code"
       value={formik.values.address?.zip_code || ""}
       onChange={formik.handleChange}
@@ -234,7 +233,7 @@ export default function Page() {
       }
     />
     <InputField
-      name="address.country"
+      name="address[0].country"
       label="Country"
       value={formik.values.address?.country || ""}
       onChange={formik.handleChange}
@@ -314,7 +313,7 @@ export default function Page() {
               </Button>
             )}
             {step === 3 && (
-              <Button type="submit" fn={()=>formik.handleSubmit()} loading={isPending} style="primary">
+              <Button type="submit" fn={()=>{console.log('hi')}} loading={isPending} style="primary">
                 Submit
               </Button>
             )}

@@ -18,7 +18,7 @@ interface IUser {
     middle_name: string;
     _id: string;
   };
-  address: {
+  address: [{
     street: string;
     city: string;
     state: string;
@@ -26,7 +26,7 @@ interface IUser {
     country: string;
     default_address: boolean;
     _id: string;
-  };
+  }];
   email?: string;
   password?: string;
   phoneNumber?: string;
@@ -50,7 +50,7 @@ export default function Page() {
         middle_name: "",
         _id: "",
       },
-      address: {
+      address: [{
         street: "",
         city: "",
         state: "",
@@ -58,7 +58,7 @@ export default function Page() {
         country: "",
         default_address: false,
         _id: "",
-      },
+      }],
       email: "",
       password: "",
       phoneNumber: "",
@@ -106,8 +106,7 @@ export default function Page() {
         </div>
 
         <form
-          onSubmit={
-            formik.handleSubmit}
+          onSubmit={formik.handleSubmit}
           className="flex flex-col gap-4 mt-10"
         >
           {/* Step 1: Personal Information */}
@@ -154,100 +153,100 @@ export default function Page() {
           {step === 2 && (
   <>
     <InputField
-      name="address.street"
+      name="address[0].street"
       label="Street"
-      value={formik.values.address?.street || ""}
+      value={formik.values.address[0]?.street || ""}
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
       error={
-        formik.touched.address?.street && 
+        formik.touched.address?.[0]?.street && 
         formik.errors.address ? 
           (typeof formik.errors.address === 'string' ? 
             null : // Handle case where address has a string error
-            (formik.errors.address && 
-            typeof formik.errors.address === 'object' && 
-            'street' in formik.errors.address ? 
-              formik.errors.address.street as string : 
+            (formik.errors.address[0] && 
+            typeof formik.errors.address[0] === 'object' && 
+            'street' in formik.errors.address[0] ? 
+              formik.errors.address[0].street as string : 
               null)
           ) : 
           null
       }
     />
     <InputField
-      name="address.city"
+      name="address[0].city"
       label="City"
-      value={formik.values.address?.city || ""}
+      value={formik.values.address[0]?.city || ""}
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
       error={
-        formik.touched.address?.city && 
+        formik.touched.address?.[0]?.city && 
         formik.errors.address ? 
           (typeof formik.errors?.address === 'string' ? 
             null : // Handle case where address has a string error
-            (formik.errors.address && 
-            typeof formik.errors.address === 'object' && 
-            'city' in formik.errors.address ? 
-              formik.errors.address.city as string : 
+            (formik.errors.address[0] && 
+            typeof formik.errors.address[0] === 'object' && 
+            'city' in formik.errors.address[0] ? 
+              formik.errors.address[0].city as string : 
               null)
           ) : 
           null
       }
     />
     <InputField
-        name="address.state"
+        name="address[0].state"
         label="State"
-        value={formik.values.address?.state || ""}
+        value={formik.values.address[0]?.state || ""}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         error={
-          formik.touched.address?.state && 
+          formik.touched.address?.[0]?.state && 
           formik.errors.address ? 
             (typeof formik.errors.address === 'string' ? 
               null : // Handle case where address has a string error
-              (formik.errors.address && 
-              typeof formik.errors.address === 'object' && 
-              'state' in formik.errors.address ? 
-                formik.errors.address.state as string : 
+              (formik.errors.address[0] && 
+              typeof formik.errors.address[0] === 'object' && 
+              'state' in formik.errors.address[0] ? 
+                formik.errors.address[0].state as string : 
                 null)
             ) : 
             null
         }
       />
     <InputField
-      name="address.zip_code"
+      name="address[0].zip_code"
       label="Zip Code"
-      value={formik.values.address?.zip_code || ""}
+      value={formik.values.address[0]?.zip_code || ""}
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
       error={
-        formik.touched.address?.zip_code && 
+        formik.touched.address?.[0]?.zip_code && 
         formik.errors.address ? 
           (typeof formik.errors.address === 'string' ? 
             null : // Handle case where address has a string error
-            (formik.errors.address && 
-            typeof formik.errors.address === 'object' && 
-            'zip_code' in formik.errors.address ? 
-              formik.errors.address.zip_code as string : 
+            (formik.errors.address[0] && 
+            typeof formik.errors.address[0] === 'object' && 
+            'zip_code' in formik.errors.address[0] ? 
+              formik.errors.address[0].zip_code as string : 
               null)
           ) : 
           null
       }
     />
     <InputField
-      name="address.country"
+      name="address[0].country"
       label="Country"
-      value={formik.values.address?.country || ""}
+      value={formik.values.address[0]?.country || ""}
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
       error={
-        formik.touched.address?.country && 
+        formik.touched.address?.[0]?.country && 
         formik.errors.address ? 
           (typeof formik.errors.address === 'string' ? 
             null : // Handle case where address has a string error
-            (formik.errors.address && 
-            typeof formik.errors.address === 'object' && 
-            'country' in formik.errors.address ? 
-              formik.errors.address.country as string : 
+            (formik.errors.address[0] && 
+            typeof formik.errors.address[0] === 'object' && 
+            'country' in formik.errors.address[0] ? 
+              formik.errors.address[0].country as string : 
               null)
           ) : 
           null
@@ -314,7 +313,7 @@ export default function Page() {
               </Button>
             )}
             {step === 3 && (
-              <Button type="submit" fn={()=>formik.handleSubmit()} loading={isPending} style="primary">
+              <Button type="submit" fn={()=>{console.log('hi')}} loading={isPending} style="primary">
                 Submit
               </Button>
             )}

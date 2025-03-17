@@ -106,8 +106,7 @@ export default function Page() {
         </div>
 
         <form
-          onSubmit={
-            formik.handleSubmit}
+          onSubmit={formik.handleSubmit}
           className="flex flex-col gap-4 mt-10"
         >
           {/* Step 1: Personal Information */}
@@ -314,7 +313,8 @@ export default function Page() {
               </Button>
             )}
             {step === 3 && (
-              <Button type="submit" fn={()=>formik.handleSubmit()} loading={isPending} style="primary">
+              <Button type="submit" fn={()=>{console.log('hi')
+              formik.handleSubmit()}} loading={isPending} style="primary">
                 Submit
               </Button>
             )}

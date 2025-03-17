@@ -119,7 +119,7 @@ export default function Orders() {
                 <div className="flex-grow p-4">
                   <h3 className="font-medium md:text-sm text-xs">{ "Order #" + order.orderId}</h3>
                   <p className="md:text-sm text-xs text-gray-600">{"Customer"}</p>
-                  <div className="flex md:flex-row flex-col md:items-center mt-1">
+                  <div className="flex items-center mt-1">
                     <span 
                       className={`text-xs px-2 py-0.5 rounded-full ${
                        order.status === 'pending'
@@ -140,7 +140,7 @@ export default function Orders() {
                 {/* See Details button */}
                 <Link 
                   href={`?tab=order&&orderId=${order.orderId}`}
-                  className="bg-red-100 text-red-700 md:text-sm text-[10px] py-1 px-3 mr-4 rounded hover:bg-red-200 transition"
+                  className="bg-red-100 text-red-700 text-sm py-1 px-3 mr-4 rounded hover:bg-red-200 transition"
                 >
                   See Details
                 </Link>

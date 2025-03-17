@@ -140,7 +140,7 @@ export default function Orders() {
                 {/* See Details button */}
                 <Link 
                   href={`?tab=order&&orderId=${order.orderId}`}
-                  className="bg-red-100 text-red-700 md:text-sm text-[10px] py-1 px-3 mr-4 rounded hover:bg-red-200 transition"
+                  className="bg-red-100 text-red-700 text-sm py-1 px-3 mr-4 rounded hover:bg-red-200 transition"
                 >
                   See Details
                 </Link>

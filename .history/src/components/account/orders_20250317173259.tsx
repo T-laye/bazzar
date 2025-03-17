@@ -79,8 +79,9 @@ export default function Orders() {
           {tabs.map((tab) => (
             <div
               key={tab}
-              className={`px-6 py-2 md:text-[15px] text-xs truncate cursor-pointer relative ${activeTab === tab ? 'text-red-700 font-medium' : 'text-gray-400'}`}
-
+              className={`px-6 py-2 md:text-[15px] text-xs max-w-[35px] w-[30px] truncate text-ellipsis cursor-pointer relative ${
+                activeTab === tab ? 'text-red-700 font-medium' : 'text-gray-400'
+              }`}
               onClick={() => {
                 setActiveTab(tab);
                 setCurrentPage(1); // Reset to first page when changing tabs
@@ -103,7 +104,7 @@ export default function Orders() {
         <div className="space-y-4">
           {paginatedOrders.length > 0 ? (
             paginatedOrders.map((order) => (
-              <div key={order.orderId + uuidV4()} className="flex  items-center border rounded-md shadow-sm">
+              <div key={order.orderId + uuidV4()} className="flex md:text-[14px] text-sm items-center border rounded-md shadow-sm">
                 {/* Image placeholder or product image */}
                 <div className="bg-gray-200 w-16 h-16 flex-shrink-0">
                   {order.picture && (
@@ -117,9 +118,9 @@ export default function Orders() {
                 
                 {/* Order info */}
                 <div className="flex-grow p-4">
-                  <h3 className="font-medium md:text-sm text-xs">{ "Order #" + order.orderId}</h3>
-                  <p className="md:text-sm text-xs text-gray-600">{"Customer"}</p>
-                  <div className="flex md:flex-row flex-col md:items-center mt-1">
+                  <h3 className="font-medium">{ "Order #" + order.orderId}</h3>
+                  <p className="text-sm text-gray-600">{"Customer"}</p>
+                  <div className="flex items-center mt-1">
                     <span 
                       className={`text-xs px-2 py-0.5 rounded-full ${
                        order.status === 'pending'
@@ -140,7 +141,7 @@ export default function Orders() {
                 {/* See Details button */}
                 <Link 
                   href={`?tab=order&&orderId=${order.orderId}`}
-                  className="bg-red-100 text-red-700 md:text-sm text-[10px] py-1 px-3 mr-4 rounded hover:bg-red-200 transition"
+                  className="bg-red-100 text-red-700 text-sm py-1 px-3 mr-4 rounded hover:bg-red-200 transition"
                 >
                   See Details
                 </Link>

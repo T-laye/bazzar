@@ -43,7 +43,6 @@ export const signUpValidationSchema = Yup.object().shape({
     state: Yup.string().required("State is required"),
     zip_code: Yup.string().required("Zip Code is required"),
     country: Yup.string().required("Country is required"),
-    default_address: Yup.boolean()
   }),
   phoneNumber: Yup.string()
     .required("Phone number is required")

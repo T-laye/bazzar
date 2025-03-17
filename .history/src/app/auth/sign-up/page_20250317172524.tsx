@@ -106,8 +106,7 @@ export default function Page() {
         </div>
 
         <form
-          onSubmit={
-            formik.handleSubmit}
+          onSubmit={formik.handleSubmit}
           className="flex flex-col gap-4 mt-10"
         >
           {/* Step 1: Personal Information */}
