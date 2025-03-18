@@ -75,10 +75,10 @@ export default function Account() {
             </div>
             
             <Button
-              fn={() => logoutMutation.mutate()} 
-              disabled={logoutMutation.isPending} 
-              type='button' style='primary' css="w-full  text-white py-2 px-4 rounded mb-4">
-              {logoutMutation.isPending ? 'Logging out...' : 'Logout'}
+            fn={() => logoutMutation.mutate()} 
+            disabled={logoutMutation.isPending} 
+             type='button' style='primary' css="w-full  text-white py-2 px-4 rounded mb-4">
+              Log Out
             </Button>
           </div>
           

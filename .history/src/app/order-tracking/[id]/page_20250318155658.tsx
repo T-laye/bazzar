@@ -98,7 +98,7 @@ console.log(order)
                   <div key={event.title} className="relative pl-8">
                     <div className="absolute left-0 top-1.5 w-3 h-3 bg-red-600 rounded-full"></div>
                     <div className="mb-1 text-gray-800">{event.title}</div>
-                    <div className="text-sm text-gray-500">{event?.date ? new Date(event.date)?.toLocaleDateString() : 'N/A'}</div>
+                    <div className="text-sm text-gray-500">{event?.data ? new Date(event.date)?.toLocaleDateString() : 'N/A'}</div>
                     {index < (trackingData?.timeline?.length || 0) - 1 && (
                       <div className="absolute left-1.5 top-4 w-0.5 h-12 bg-gray-300"></div>
                     )}

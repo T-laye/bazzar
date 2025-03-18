@@ -180,13 +180,7 @@ export const useLogout = () => {
            sessionStorage.removeItem('refreshToken');
            sessionStorage.removeItem('accessToken');
 
-            // Refresh the page first
-            router.refresh();
-
-            // Redirect to homepage after a slight delay
-            setTimeout(() => {
-                router.push('/');
-            }, 100); 
+          router.push('/');
       },
       onError: (error) => {
           console.error("Logout failed:", error);

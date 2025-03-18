@@ -66,8 +66,8 @@ export default function Page() {
     },
     validationSchema: signUpValidationSchema,
     onSubmit: (values) => {
-      // console.log("Form Submitted:", values);
-      // console.log("Errors:", formik.errors);
+      console.log("Form Submitted:", values);
+      console.log("Errors:", formik.errors);
       mutate(values);
     },
   });

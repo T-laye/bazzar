@@ -1,4 +1,4 @@
-import { authAxios, axiosInstance } from "@/config/axios";
+import { axiosInstance } from "@/config/axios";
 import { ICreateUser, ISession, IUser } from "@/types";
 import { signInRoute } from "@/utilities/Routes";
 // import { OtpVerificationRoute } from "@/utilities/Routes";
@@ -165,7 +165,7 @@ export const useLogin = () => {
 
 
 const logout = async () => {
-  await authAxios.post('/auth/logout', {}, { withCredentials: true });
+  await axiosInstance.post('/auth/logout', {}, { withCredentials: true });
 };
 
 export const useLogout = () => {
@@ -175,18 +175,7 @@ export const useLogout = () => {
       mutationFn: logout,
       onSuccess: () => {
           // Redirect to login page after logout
-           // Clear session storage on logout
-           sessionStorage.removeItem('user');
-           sessionStorage.removeItem('refreshToken');
-           sessionStorage.removeItem('accessToken');
-
-            // Refresh the page first
-            router.refresh();
-
-            // Redirect to homepage after a slight delay
-            setTimeout(() => {
-                router.push('/');
-            }, 100); 
+          router.push('/login');
       },
       onError: (error) => {
           console.error("Logout failed:", error);

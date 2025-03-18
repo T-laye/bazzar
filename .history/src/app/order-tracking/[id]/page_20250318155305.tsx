@@ -72,7 +72,7 @@ console.log(order)
               <div>
                 <h2 className="text-sm font-medium text-gray-600 mb-2">Parcel Date</h2>
                 <div className="bg-gray-100 p-3 rounded">
-                  <p className="text-gray-700">{order?.parcelDate ? new Date(order.parcelDate)?.toLocaleDateString() : 'Not yet shipped'}</p>
+                  <p className="text-gray-700">{order?.parcelDate ? new Date(order.parcelDate).toLocaleDateString() : 'Not yet shipped'}</p>
                 </div>
               </div>
 
@@ -98,7 +98,7 @@ console.log(order)
                   <div key={event.title} className="relative pl-8">
                     <div className="absolute left-0 top-1.5 w-3 h-3 bg-red-600 rounded-full"></div>
                     <div className="mb-1 text-gray-800">{event.title}</div>
-                    <div className="text-sm text-gray-500">{event?.date ? new Date(event.date)?.toLocaleDateString() : 'N/A'}</div>
+                    <div className="text-sm text-gray-500">{event.date}</div>
                     {index < (trackingData?.timeline?.length || 0) - 1 && (
                       <div className="absolute left-1.5 top-4 w-0.5 h-12 bg-gray-300"></div>
                     )}
