@@ -47,18 +47,7 @@ export default function AddressForm() {
             ...user,
             address: response.data.userAddress
         }
-      
-    if (session) {
-      const updatedSession = {
-        ...session,
-        user: {
-          ...session.user,
-          address: response.data.userAddress, // Ensure this structure matches ISession
-        },
-      };
-
-      setSession(updatedSession); // Use Zustand's setter
-    }
+        setSession({ user: updatedUser }) // Update global state
 
         sessionStorage.setItem('user', JSON.stringify(updatedUser));
 
@@ -83,18 +72,7 @@ const handleRemoveAddress = async (addressId: string) => {
             ...user,
             address: user?.address?.filter(address => address._id !== addressId) || []
         }
-        
-    if (session) {
-      const updatedSession = {
-        ...session,
-        user: {
-          ...session.user,
-          address: response.data.userAddress, // Ensure this structure matches ISession
-        },
-      };
-
-      setSession(updatedSession); // Use Zustand's setter
-    }
+        setSession({ user: updatedUser });
 
         sessionStorage.setItem('user', JSON.stringify(updatedUser));
 

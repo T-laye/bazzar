@@ -13,7 +13,6 @@ export default function AccountTab() {
   const { session } = useSessionStore();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [isLoading, setIsLoading] = useState(false)
-  const [isLoadingP, setIsLoadingP] = useState(false)
 
   // Initialize form state with user data from session
   const [formData, setFormData] = useState({
@@ -78,7 +77,7 @@ setIsLoading(true)
     const payload = {
       first_name: formData.firstName,
       last_name: formData.lastName,
-      middle_name:session?.user?.name?.middle_name,
+      middle_name:user?.name?.middle_name,
       email:formData.email,
       phoneNumber:formData.phoneNumber
     }
@@ -97,36 +96,24 @@ setIsLoading(true)
   };
 
   // Handle password change
-  const handlePasswordChange = async(e: React.FormEvent<HTMLFormElement>) => {
+  const handlePasswordChange = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   
     if (formData.newPassword !== formData.confirmPassword) {
       alert("New passwords don't match");
       return;
     }
-    
-    setIsLoadingP(true);
-    
-    try {
-      const response = await authAxios.put('/customer/update-password', {
-        password: formData.newPassword, 
-        currentPassword: formData.currentPassword
-      });
-      
-      toast.success(response.data.message);
-      
-      // Reset password fields only on success
-      setFormData((prev) => ({
-        ...prev,
-        currentPassword: "",
-        newPassword: "",
-        confirmPassword: "",
-      }));
-    } catch(e: any) { // Using 'any' for better error handling
-      toast.error(e?.response?.data?.message || 'Failed to change password');
-    } finally {
-      setIsLoadingP(false); // Always reset loading state
-    }
+  
+    // Send the password change request to your backend
+    console.log("Password change requested");
+  
+    // Reset password fields
+    setFormData((prev) => ({
+      ...prev,
+      currentPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+    }));
   };
   
   const user = session?.user;
@@ -292,9 +279,8 @@ setIsLoading(true)
                   type="submit" 
                   style='primary'
                   css="text-white py-2 px-6 rounded"
-                  disabled={isLoadingP}
                 >
-                                   {isLoadingP ? "Loading..." : "Change password"}
+                  Change Password
                 </Button>
               </form>
             </div>

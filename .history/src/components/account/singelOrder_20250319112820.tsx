@@ -98,7 +98,7 @@ export default function OrderDetails() {
                 {order.status}
               </span> */}
               <div className="space-y-2">
-                <Link href={`products/product/${product.productId}`} className="bg-red-700 text-white text-sm py-1 px-4 rounded w-full">
+                <Link href={`productsproduct.productId`} className="bg-red-700 text-white text-sm py-1 px-4 rounded w-full">
                   Buy Again
                 </Link>
                 {/* <button className="text-gray-700 text-sm py-1 px-4 w-full text-right">

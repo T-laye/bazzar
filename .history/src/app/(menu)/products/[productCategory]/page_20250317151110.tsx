@@ -25,7 +25,7 @@ export default function Page() {
         <PageLoading />
       ) : (
         <div className="grid min-[700px]:grid-cols-2 min-[1000px]:grid-cols-3 min-[1300px]:grid-cols-4  xl:gridcols-4 gap-10 mt-10 ">
-          {data?.length === 0 ? (
+          {data.length === 0 ? (
             <div className="text-xl font-semibold">No Products Found</div>
           ) : (
             data?.map((p: Product, i: number) => (

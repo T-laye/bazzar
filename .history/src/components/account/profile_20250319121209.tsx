@@ -104,29 +104,23 @@ setIsLoading(true)
       alert("New passwords don't match");
       return;
     }
-    
-    setIsLoadingP(true);
-    
-    try {
-      const response = await authAxios.put('/customer/update-password', {
-        password: formData.newPassword, 
-        currentPassword: formData.currentPassword
-      });
-      
-      toast.success(response.data.message);
-      
-      // Reset password fields only on success
-      setFormData((prev) => ({
-        ...prev,
-        currentPassword: "",
-        newPassword: "",
-        confirmPassword: "",
-      }));
-    } catch(e: any) { // Using 'any' for better error handling
-      toast.error(e?.response?.data?.message || 'Failed to change password');
-    } finally {
-      setIsLoadingP(false); // Always reset loading state
+    setIsLoadingP(true)
+    // Send the password change request to your backend
+    console.log("Password change requested");
+    try{
+      const response = await authAxios.put('/customer/update-password',{password:formData.newPassword})
+      toast.success(response.data.message)
+    }catch(e){
+      setIsLoadingP(false)
+      toast.error('Failed to change password')
     }
+    // Reset password fields
+    setFormData((prev) => ({
+      ...prev,
+      currentPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+    }));
   };
   
   const user = session?.user;
