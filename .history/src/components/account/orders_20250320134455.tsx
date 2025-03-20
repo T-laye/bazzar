@@ -93,8 +93,8 @@ export default function Orders() {
               {tab} 
               <span className="ml-1 text-xs">
                 ({tab === 'Completed' ? completedOrders.length : 
-                  tab === 'Pending' ? pendingOrders.length : tab ==='Cancelled'?
-                  cancelledOrders.length: deliveredOrders.length})
+                  tab === 'Pending' ? pendingOrders.length : 
+                  cancelledOrders.length})
               </span>
               {activeTab === tab && (
                 <div className="absolute bottom-0 left-0 w-full h-1 bg-red-700"></div>

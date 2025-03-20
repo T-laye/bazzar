@@ -26,7 +26,7 @@ export default function Orders() {
   const completedOrders = orders?.filter((order) => order.status === 'completed') || [];
   const pendingOrders = orders?.filter((order) => order.status === 'pending') || [];
   const cancelledOrders = orders?.filter((order) => order.status === 'cancelled') || [];
-  const deliveredOrders = orders?.filter((order) => order.status === 'delivered') || [];
+  const deliveredOrders = orders?.filter((order) => order.status === 'Delivered') || [];
 
   // Determine which orders to display based on active tab
   let activeOrders = [];
@@ -93,8 +93,8 @@ export default function Orders() {
               {tab} 
               <span className="ml-1 text-xs">
                 ({tab === 'Completed' ? completedOrders.length : 
-                  tab === 'Pending' ? pendingOrders.length : tab ==='Cancelled'?
-                  cancelledOrders.length: deliveredOrders.length})
+                  tab === 'Pending' ? pendingOrders.length : 
+                  cancelledOrders.length})
               </span>
               {activeTab === tab && (
                 <div className="absolute bottom-0 left-0 w-full h-1 bg-red-700"></div>
