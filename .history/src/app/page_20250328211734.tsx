@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="">
       <Header />
-      <HeroSlider/>
+      {/* <HeroSlider/> */}
       <CategoriesSection />
       <ExpandSection />
       <IndustryServedSection />
