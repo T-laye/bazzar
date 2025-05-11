@@ -6,7 +6,7 @@ export const productCategoriesContents = [
     img: "/caliberations.jpg",
     description:
       "Process Instrumentation ",
-    route: productRoute("Process instrumentation"),
+    route: productRoute("calibration"),
   },
   {
     title: "Scales and Weights",

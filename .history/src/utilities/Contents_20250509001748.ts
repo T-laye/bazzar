@@ -2,11 +2,11 @@ import { productRoute } from "./Routes";
 
 export const productCategoriesContents = [
   {
-    title: "Process Instrumentation",
+    title: "Process",
     img: "/caliberations.jpg",
     description:
-      "Process Instrumentation ",
-    route: productRoute("Process instrumentation"),
+      "Calibration is the process of comparing a measurement device with a standard device to determine the accuracy of the measurement device. It ensures accuracy and reliability in various industries such as manufacturing, healthcare, and environmental monitoring.",
+    route: productRoute("calibration"),
   },
   {
     title: "Scales and Weights",

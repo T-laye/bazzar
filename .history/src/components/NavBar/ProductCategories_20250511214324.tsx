@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Category from "../Categories";
 import CategoryCard from "../ui/CategoryCard";
 import { productCategoriesContents } from "@/utilities/Contents";
-import Link from "next/link";
 
 const ProductCategories = () => {
   const [showAll, setShowAll] = useState(false);
@@ -18,12 +17,12 @@ const ProductCategories = () => {
       ))}
 
       {!showAll && productCategoriesContents.length > 5 && (
-        <Link
-          href="/categories"
+        <button
+          onClick={() => setShowAll(true)}
           className="mt-4 text-sm font-medium text-blue-600 hover:underline"
         >
           See More
-        </Link>
+        </button>
       )}
     </Category>
   );
